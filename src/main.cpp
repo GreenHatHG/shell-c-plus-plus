@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
     // pwd();
-    list();
+    // list();
+    cd();
     return 0;
 }

@@ -7,4 +7,6 @@ void pwd();
 // 列出指定目录名中的所有目录及文件
 void list();
 
+// 改变当前工作目录
+void cd();
 #endif

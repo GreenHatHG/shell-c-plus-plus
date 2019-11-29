@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "shell.h"
-// 提供opendir,readdir函数
+// 提供opendir,readdir,closedir函数
 #include <dirent.h>
 using namespace std;
 
@@ -32,4 +32,6 @@ void list()
             cout << dirp->d_name << endl;
         }
     }
+
+    closedir(dir);
 }
