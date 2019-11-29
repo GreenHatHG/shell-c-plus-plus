@@ -6,6 +6,7 @@ int main()
 {
     // pwd();
     // list();
-    cd();
+    // cd();
+    mymkdir();
     return 0;
 }

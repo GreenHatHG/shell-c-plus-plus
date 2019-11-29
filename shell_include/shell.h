@@ -9,4 +9,6 @@ void list();
 
 // 改变当前工作目录
 void cd();
+
+void mymkdir();
 #endif
