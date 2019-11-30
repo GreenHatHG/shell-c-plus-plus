@@ -15,4 +15,7 @@ void mkdir();
 
 // 删除目录
 void rmdir();
+
+// 重命名一个文件或目录
+void rename();
 #endif

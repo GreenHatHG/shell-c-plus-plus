@@ -8,6 +8,7 @@ int main()
     // list();
     // cd();
     // mymkdir();
-    rmdir();
+    // rmdir();
+    // rename();
     return 0;
 }
