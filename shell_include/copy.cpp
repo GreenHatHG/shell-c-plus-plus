@@ -3,8 +3,6 @@
 #include <cstdio>
 #include <dirent.h>
 #include "shell.h"
-// 提供rename函数
-#include <cstdio>
 using namespace std;
 
 // 判断给出的路径是文件夹,还是文件
