@@ -24,4 +24,9 @@ void copy();
 
 // 在指定的目录及其子目录中查找指定的文件，并输出查找到的文件的绝对路径
 void find();
+
+//  用于输出提示符
+void print_prompt();
+
+void scan_command(char *command);
 #endif

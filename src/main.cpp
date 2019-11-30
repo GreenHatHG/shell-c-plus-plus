@@ -11,6 +11,9 @@ int main()
     // rmdir();
     // rename();
     // copy();
-    find();
+    // find();
+    print_prompt();
+    char command[100];
+    scan_command(command); 
     return 0;
 }

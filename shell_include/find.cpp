@@ -2,7 +2,6 @@
 #include <cstring>
 #include <cstdio>
 #include <dirent.h>
-#include <regex>
 #include "shell.h"
 using namespace std;
 
