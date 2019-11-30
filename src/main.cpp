@@ -10,6 +10,7 @@ int main()
     // mymkdir();
     // rmdir();
     // rename();
-    copy();
+    // copy();
+    find();
     return 0;
 }
