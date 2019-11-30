@@ -5,7 +5,7 @@
 #include <sys/types.h>
 using namespace std;
 
-void mymkdir()
+void mkdir()
 {
     char pathname[100];
     cin >> pathname;
@@ -13,10 +13,10 @@ void mymkdir()
     /* int mkdir(const char *pathname, mode_t mode); */
     if(mkdir(pathname, 0755) == 0)
     {
-        cout << "mkdir success" << endl;
+        cout << "successfully mkdired" << endl;
     }
     else
     {
-        cout << "mkdir failure" << endl;
+        cout << "failed to mkdir" << endl;
     }
 }

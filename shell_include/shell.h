@@ -10,5 +10,9 @@ void list();
 // 改变当前工作目录
 void cd();
 
-void mymkdir();
+// 新建目录
+void mkdir();
+
+// 删除目录
+void rmdir();
 #endif
