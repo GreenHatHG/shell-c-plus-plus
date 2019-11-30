@@ -10,5 +10,6 @@ int main()
     // mymkdir();
     // rmdir();
     // rename();
+    copy();
     return 0;
 }

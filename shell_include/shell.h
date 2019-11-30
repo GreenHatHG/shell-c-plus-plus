@@ -18,4 +18,7 @@ void rmdir();
 
 // 重命名一个文件或目录
 void rename();
+
+// 复制一个已存在的文件
+void copy();
 #endif
