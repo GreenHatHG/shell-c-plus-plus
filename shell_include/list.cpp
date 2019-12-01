@@ -1,37 +1,28 @@
 #include <iostream>
 #include <cstring>
 #include "shell.h"
-// 提供opendir,readdir,closedir函数
+// 提供scandir函数
 #include <dirent.h>
 using namespace std;
 
-void list()
-{
-    char name[100];
-    cin >> name;
-
-    /* DIR * opendir(const char * name); 
-        打开参数name指定的目录，并返回DIR*形态的目录流，如果无法打开，则返回NULL*/
-    DIR* dir = opendir(name);
-    if(dir == NULL)
-    {
+void list(char* name){
+    struct dirent **namelist;
+    /*扫描dir目录下(不包括子目录)满足filter过滤模式的文件
+        返回的结果是compare函数经过排序的，并保存在namelist中
+        alphasort是为scandir最后调用qsort函数时传给qsort作为判断的函数*/
+    int total = scandir(name, &namelist, 0, alphasort);
+    if(total == -1){
         cout <<  "list: cannot access '" << name 
             << "': No such file or directory" << endl;
         return;
     }
-
-    struct dirent* dirp;
-    /* struct dirent * readdir(DIR * dir);
-        成功则返回下个目录进入点。有错误发生或读取到目录文件尾则返回NULL */
-    while((dirp = readdir(dir)) != NULL)
-    {
-        // 去除不需要输出的符号
-        if(!(strcmp(dirp->d_name, ".") == 0 
-            || strcmp(dirp->d_name, "..") == 0))
-        {
-            cout << dirp->d_name << endl;
+    cout << "total " << total-2 << endl;
+    for(int i=0; i<total; i++){
+        char* d_name = namelist[i]->d_name;
+        if(!(strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0)){
+            cout << d_name << endl;
+            free(namelist[i]);
         }
     }
-
-    closedir(dir);
+    free(namelist);
 }

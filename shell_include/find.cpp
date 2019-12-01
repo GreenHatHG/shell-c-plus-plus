@@ -38,10 +38,7 @@ void list_dir(const char* file, const char* path)
 	}
 }
 
-void find()
+void find(char* path, char* file)
 {
-    char path[100];
-    char file[100];
-    cin >> path >> file;
     list_dir(file, path);
 }

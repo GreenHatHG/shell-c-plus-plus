@@ -2,22 +2,17 @@
 #include "shell.h"
 // 提供rename函数
 #include <cstdio>
+#include <cerrno>
+#include <cstring>
 using namespace std;
 
-void rename()
+void myrename(char* oldpath, char* newpath)
 {
-    char oldpath[100];
-    char newpath[100];
-    cin >> oldpath >> newpath;
-
+    errno = 0;
     /* int rename(const char *oldpath, const char *newpath); */
-    if(rename(oldpath, newpath) == 0)
-    {
-        cout << "successfully renamed" << endl;
+    int result = rename(oldpath, newpath);
+    if(result != 0){
+         cout << "rename: cannot rename '" << oldpath << "': " << 
+            strerror(errno) << endl;
     }
-    else
-    {
-       cout << "failed to rename" << endl;
-    }
-     
 }

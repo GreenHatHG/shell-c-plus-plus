@@ -6,11 +6,9 @@
 using namespace std;
 
 // 判断给出的路径是文件夹,还是文件
-bool is_folder(const char* pathname)
-{
+bool is_folder(const char* pathname){
     DIR *dp;
-    if((dp = opendir(pathname)) == NULL)
-    {
+    if((dp = opendir(pathname)) == NULL){
         return false;
     }
     closedir(dp);
@@ -18,19 +16,16 @@ bool is_folder(const char* pathname)
 }
 
 // 文件复制
-int file_copy(const char* oldfile, const char* newfile)
-{
+int file_copy(const char* oldfile, const char* newfile){
      FILE *input,*output;
     //  判断文件是否存在
-    if((input = fopen(oldfile, "r")) == NULL)
-    {
+    if((input = fopen(oldfile, "r")) == NULL){
         cout <<  "copy: cannot access '" << oldfile 
             << "': No such file" << endl;
         return -1;
     }
     // 判断是否可写
-    if((output = fopen(newfile, "w")) == NULL)
-    {
+    if((output = fopen(newfile, "w")) == NULL){
         cout << "copy: permission denied" << endl;
         return -2;
     }
@@ -38,8 +33,7 @@ int file_copy(const char* oldfile, const char* newfile)
     // 从流中返回一个字符值,读取一个字节后，光标位置后移一个字节
     char ch = fgetc(input);
     // 检测流上的文件结束符
-    while(!feof(input))
-    {
+    while(!feof(input)){
         // 将字符ch写到文件指针output所指向的文件的当前写指针的位置
         fputc(ch, output);
         ch = fgetc(input);
@@ -50,8 +44,7 @@ int file_copy(const char* oldfile, const char* newfile)
 }
 
 // 文件复制到文件夹的情况
-int copy_file_to_folder(const char* file, const char* folder)
-{
+int copy_file_to_folder(const char* file, const char* folder){
     // 文件名称
     char file_name[100];
     // 目标文件路径
@@ -60,8 +53,7 @@ int copy_file_to_folder(const char* file, const char* folder)
     int file_path_length = strlen(file);
 
     int i; 
-    for(i = file_path_length; i >= 0; i--)
-    {
+    for(i = file_path_length; i >= 0; i--){
         if(file[i] == '/')
         {
             // 提取斜杠后的文件名
@@ -72,8 +64,7 @@ int copy_file_to_folder(const char* file, const char* folder)
         }
     }
     // 没有斜杠，路径名就是文件名
-    if(i <= -1)
-    {
+    if(i <= -1){
         // strcpy把含有'\0'结束符的字符串复制到另一个地址空间
         strcpy(file_name, file); 
     }
@@ -84,23 +75,11 @@ int copy_file_to_folder(const char* file, const char* folder)
     return file_copy(file, file_dest);
 }
 
-void copy()
-{
-    char oldfile[100], newfile[100];
-    cin >> oldfile >> newfile;
-
-    if(is_folder(newfile))
-    {
-        if(copy_file_to_folder(oldfile, newfile) == 0)
-        {
-            cout << "successfully copy" << endl;
-        }
+void copy(char* oldfile, char* newfile){
+    if(is_folder(newfile)){
+        copy_file_to_folder(oldfile, newfile);
     }
-    else
-    {
-        if(file_copy(oldfile, newfile) == 0)
-        {
-            cout << "successfully copy" << endl;
-        }
+    else{
+        file_copy(oldfile, newfile);
     }
 }
