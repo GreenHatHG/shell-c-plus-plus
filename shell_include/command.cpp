@@ -20,6 +20,9 @@ void execute(char* command){
     char tmp[100];
     strcpy(tmp, command);
     char* com1 = strtok(command, " ");
+    if(com1 == NULL){
+        return;
+    }
     if (strcmp(com1, "exit") == 0){
 		cout << "正在退出解析器···" << endl;
 		exit(0);
@@ -60,9 +63,11 @@ void execute(char* command){
         }
     }
     else if(strcmp(com1, "rename") == 0){
-        char* com2 = strtok(NULL, " ");        
-        char* com3 = strtok(NULL, " "); 
+        char* com2 = strtok(NULL, " "); 
+        if(com2){
+            char* com3 = strtok(NULL, " "); 
         myrename(com2, com3);
+        }    
     }
     else if(strcmp(com1, "copy") == 0){
         vector<char*> command_list;
@@ -81,7 +86,6 @@ void execute(char* command){
         sscanf(tmp, "find %s -name %s", path, file);
         find(path, file);
     }
-
 }
 
 // 命令提示
