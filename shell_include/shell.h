@@ -28,5 +28,4 @@ void find(char* path, char* file);
 //  用于输出提示符
 void print_prompt();
 
-// void scan_command(char *command);
 #endif

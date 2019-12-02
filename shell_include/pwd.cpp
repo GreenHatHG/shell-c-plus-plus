@@ -4,8 +4,7 @@
 #include <unistd.h>
 using namespace std;
 
-void pwd()
-{
+void pwd(){
     char buf[120];
 
     /*  char *getcwd(char *buf, size_t size);

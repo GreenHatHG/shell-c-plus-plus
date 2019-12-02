@@ -1,7 +1,5 @@
 #include <iostream>
 #include "shell.h"
-// 提供rmdir函数
-#include <unistd.h>
 #include <cerrno>
 #include <cstring>
 // 提供nftw,remove函数
